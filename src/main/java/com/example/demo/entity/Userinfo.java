@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
@@ -10,6 +12,7 @@ public class Userinfo {
     private String username;
 
     @NotBlank//密码非空效验
+    @Length(max = 18 ,min = 6 )
     private String password;
 
     private Integer phone;

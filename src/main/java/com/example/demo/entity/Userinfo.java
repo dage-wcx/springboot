@@ -1,14 +1,15 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
-
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 public class Userinfo {
     private Integer id;
 
+    @NotBlank//用户名非空效验
     private String username;
 
+    @NotBlank//密码非空效验
     private String password;
 
     private Integer phone;

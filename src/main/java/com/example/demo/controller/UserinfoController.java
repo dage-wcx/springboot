@@ -5,10 +5,12 @@ import com.example.demo.service.IUserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -18,7 +20,7 @@ public class UserinfoController {
     private IUserinfoService userinfoServiceImpl;
 
     @RequestMapping("/insert")
-    public String tt(){
+    public String tt(Userinfo userinfo){
         return "addUserinfo";
     }
 
@@ -30,8 +32,11 @@ public class UserinfoController {
     }
 
     @RequestMapping("/addUserinfo")
-    public String addUserinfo(Userinfo userinfo){
+    public String addUserinfo(@Valid Userinfo userinfo, BindingResult result){
         boolean flag = userinfoServiceImpl.addUserinfo(userinfo);
+        if(result.hasErrors()){
+            return "addUserinfo";
+        }
         if(flag){
             return "redirect:/showUser";
         }

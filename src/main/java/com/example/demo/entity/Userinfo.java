@@ -8,7 +8,7 @@ import java.util.Date;
 public class Userinfo {
     private Integer id;
 
-    @NotBlank//用户名非空效验
+    @NotBlank()//用户名非空效验
     private String username;
 
     @NotBlank//密码非空效验

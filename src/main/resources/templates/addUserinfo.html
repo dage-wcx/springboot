@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>springboot整合springmvc和mybatis添加用户测试</title>
+</head>
+<body>
+    <form action="/addUserinfo" method="post">
+        <input type="text" name="username" placeholder="请输入用户名"/><br/>
+        <input type="text" name="password" placeholder="请输入密码"/><br/>
+        <input type="text" name="phone" placeholder="请输入电话号码"/><br/>
+        <label><input type="radio" name="sex" value="男"/>男</label>
+        <label><input type="radio" name="sex" value="女"/>女</label><br/>
+        <input type="text" name="question" placeholder="请输入密保问题" /><br/>
+        <input type="text" name="answer" placeholder="请输入密保问题答案" /><br/>
+        <input type="submit">
+    </form>
+</body>
+</html>

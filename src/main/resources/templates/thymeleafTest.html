@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span th:text="hello"></span>
+		<hr/>
+		<span th:text="${msg}"></span>
+		<hr/>
+		<input type="text" name="username" th:value="${msg}" />
+		<hr/>
+		<span th:text="${#strings.isEmpty(ms)}"></span>
+		<hr/>
+		<span th:text="${#strings.contains(msg,'一个')}"></span>
+		<hr/>
+		<span th:text="${#dates.format(date)}"></span><br/>
+		<span th:text="${#dates.format(date,'yy/MM/dd hh:mm:ss')}"></span><br/>
+		<span th:text="${#dates.year(date)}"></span>
+		<span th:text="${#dates.month(date)}"></span>
+		<span th:text="${#dates.day(date)}"></span><br/>
+
+		<span th:if="${sex} == '男'">性别：男</span>
+		<span th:if="${sex} == '女'">性别：女</span><br/>
+
+		<div th:switch="${sex}">
+			<span th:case="男">我是男生</span>
+			<span th:case="女">我是女生</span>
+		</div>
+
+		<table border="1">
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>password</th>
+				<th>index</th>
+				<th>count</th>
+				<th>size</th>
+				<th>even</th>
+				<th>odd</th>
+				<th>first</th>
+				<th>last</th>
+			</tr>
+			<tr th:each="user,var : ${list}">
+				<td th:text="${user.id}"></td>
+				<td th:text="${user.username}"></td>
+				<td th:text="${user.password}"></td>
+				<td th:text="${var.index}"></td>
+				<td th:text="${var.count}"></td>
+				<td th:text="${var.size}"></td>
+				<td th:text="${var.even}"></td>
+				<td th:text="${var.odd}"></td>
+				<td th:text="${var.first}"></td>
+				<td th:text="${var.last}"></td>
+			</tr>
+		</table>
+		<hr/>
+		<table border="1">
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>password</th>
+			</tr>
+			<tr th:each="maps : ${map}">
+				<td th:each="entry : ${maps}" th:text="${entry.value.id}"></td>
+				<td th:each="entry : ${maps}" th:text="${entry.value.username}"></td>
+				<td th:each="entry : ${maps}" th:text="${entry.value.password}"></td>
+			</tr>
+		</table>
+		<hr/>
+
+		<span th:text="${#httpServletRequest.getAttribute('req')}"></span><br/>
+		<span th:text="${session.session}"></span><br/>
+		<span th:text="${application.context}"></span>
+		<hr/>
+
+		<a th:href="@{http://www.baidu.com}">百度(绝对路径)</a><br/>
+		<a th:href="@{/index}">index(相对于项目的路径)</a><br/>
+		<a th:href="@{/urlTest(id=1,name=zhangsan)}">相对路径传参</a><br/>
+		<a th:href="@{/html/fileUpload.html}">相对于服务器的根</a><br/>
+
+
+	</body>
+</html>

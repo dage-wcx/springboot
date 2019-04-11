@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserinfoMapper">
+    <insert id="insertUserinfo" useGeneratedKeys="true" keyProperty="id" parameterType="userinfo">
+        insert into userinfo
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="username != null" >
+                username,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            <if test="sex != null" >
+                sex,
+            </if>
+            <if test="createtime != null" >
+                createTime,
+            </if>
+            <if test="lasttime != null" >
+                lastTime,
+            </if>
+            <if test="loginCount != null" >
+                login_count,
+            </if>
+            <if test="question != null" >
+                question,
+            </if>
+            <if test="answer != null" >
+                answer,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="username != null" >
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null" >
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null" >
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lasttime != null" >
+                #{lasttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginCount != null" >
+                #{loginCount,jdbcType=INTEGER},
+            </if>
+            <if test="question != null" >
+                #{question,jdbcType=VARCHAR},
+            </if>
+            <if test="answer != null" >
+                #{answer,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <delete id="deleteUserinfo" parameterType="int">
+        delete from userinfo where id = #{value}
+    </delete>
+
+    <resultMap id="baseResultMap" type="userinfo">
+        <id column="id" property="id"/>
+        <id column="username" property="username"/>
+        <id column="password" property="password"/>
+        <id column="phone" property="phone"/>
+        <id column="sex" property="sex"/>
+        <id column="createTime" property="createtime"/>
+        <id column="lastTime" property="lasttime"/>
+        <id column="login_count" property="loginCount"/>
+        <id column="question" property="question"/>
+        <id column="answer" property="answer"/>
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, username, password, phone, sex, createTime, lastTime, login_count, question,
+        answer
+    </sql>
+    
+    <select id="queryAllUserinfo" resultMap="baseResultMap" resultType="list">
+        select <include refid="Base_Column_List"/> from userinfo
+    </select>
+
+    <update id="updateUserinfoById" parameterType="userinfo">
+        update userinfo
+        <set >
+            <if test="username != null" >
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                phone = #{phone,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null" >
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null" >
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lasttime != null" >
+                lastTime = #{lasttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginCount != null" >
+                login_count = #{loginCount,jdbcType=INTEGER},
+            </if>
+            <if test="question != null" >
+                question = #{question,jdbcType=VARCHAR},
+            </if>
+            <if test="answer != null" >
+                answer = #{answer,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>springboot整合springmvc和mybatis展示所有用户测试</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>password</th>
+            <th>phone</th>
+            <th>sex</th>
+            <th>create-time</th>
+            <th>question</th>
+            <th>answer</th>
+        </tr>
+        <tr th:each="user : ${list}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.phone}"></td>
+            <td th:text="${user.sex}"></td>
+            <td th:text="${#dates.format(user.createtime,'yy-MM-dd hh:mm:ss')}"></td>
+            <td th:text="${user.question}"></td>
+            <td th:text="${user.answer}"></td>
+            <td><a th:href="@{/deleteUserinfoById(id=${user.id})}">删除</a></td>
+            <td><a th:href="@{/update(id=${user.id},username=${user.username},password=${user.password},
+                phone=${user.phone},sex=${user.sex},createtime=${user.createtime},question=${user.question},answer=${user.answer})}">修改</a></td>
+        </tr>
+
+    </table>
+    <a th:href="@{/insert}">添加</a>
+</body>
+</html>

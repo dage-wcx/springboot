@@ -1,36 +1,28 @@
 package com.example.demo;
 
-import com.example.demo.controller.HelloWordController;
-import org.junit.Before;
+import com.example.demo.entity.Userinfo;
+import com.example.demo.service.IUserinfoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
 
-	private MockMvc mvc;
-
-	@Before
-	public void init(){
-		mvc = MockMvcBuilders.standaloneSetup(new HelloWordController()).build();
-	}
+	@Autowired
+	private IUserinfoService userinfoServiceImpl;
 
 	@Test
-	public void contextLoads() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
-				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andDo(MockMvcResultHandlers.print())
-				.andReturn();
+	public void queryAllUserinfo() {
+		List<Userinfo> list = userinfoServiceImpl.queryAllUserinfo();
+		for (Userinfo u : list) {
+			System.out.println(u);
+		}
 	}
 
 }

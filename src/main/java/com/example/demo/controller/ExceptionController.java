@@ -26,7 +26,7 @@ public class ExceptionController {
     public ModelAndView arithmeticException(Exception e){
         ModelAndView mav = new ModelAndView();
         mav.addObject("error",e.toString());
-        mav.setViewName("error1");
+        mav.setViewName("error2");
         return mav;
     }*/
 }

@@ -23,7 +23,6 @@ public class UserinfoController {
 
     @RequestMapping("/insert")
     public String tt(Userinfo userinfo){
-        int i = 1/0;
         return "addUserinfo";
     }
 

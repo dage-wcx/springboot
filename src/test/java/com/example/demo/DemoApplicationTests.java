@@ -39,6 +39,9 @@ public class DemoApplicationTests {
 
 	    Userinfo u1 = userinfoServiceImpl.queryUserinfoById1(1);
 	    System.out.println(u1);
+
+		Userinfo u2 = userinfoServiceImpl.queryUserinfoById(1);
+		System.out.println(u2);
     }
 
 }

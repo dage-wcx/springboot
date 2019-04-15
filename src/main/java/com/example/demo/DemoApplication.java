@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.Scanner;
 
@@ -13,6 +14,7 @@ import java.util.Scanner;
 @SpringBootApplication
 @MapperScan("com.example.demo.mapper")
 @EnableCaching
+@EnableScheduling
 public class DemoApplication {
 
 	public static void main(String[] args) {

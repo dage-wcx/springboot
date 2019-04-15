@@ -13,4 +13,7 @@ public interface UserinfoMapper {
     List<Userinfo> queryAllUserinfo();
 
     int updateUserinfoById(Userinfo userinfo);
+
+    Userinfo queryUserinfoById(Integer id);
+
 }

@@ -4,6 +4,8 @@ import com.example.demo.entity.Userinfo;
 import com.example.demo.mapper.UserinfoMapper;
 import com.example.demo.service.IUserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +39,7 @@ public class UserinfoServiceImpl implements IUserinfoService {
     }
 
     @Override
+    @Cacheable(value = "userinfo")
     public List<Userinfo> queryAllUserinfo() {
         List<Userinfo> list = userinfoMapper.queryAllUserinfo();
         return list;
@@ -49,5 +52,20 @@ public class UserinfoServiceImpl implements IUserinfoService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    @Cacheable(value = "userinfo")
+    public Userinfo queryUserinfoById(Integer id) {
+        Userinfo u = userinfoMapper.queryUserinfoById(id);
+        return u;
+    }
+
+    @Override
+    @Cacheable(value = "userinfo")
+    @CacheEvict(value = "userinfo",allEntries = true)
+    public Userinfo queryUserinfoById1(Integer id) {
+        Userinfo u = userinfoMapper.queryUserinfoById(id);
+        return u;
     }
 }

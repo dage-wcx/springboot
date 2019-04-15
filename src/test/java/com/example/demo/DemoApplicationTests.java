@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = DemoApplication.class)
 public class DemoApplicationTests {
 
 	@Autowired
@@ -19,10 +19,26 @@ public class DemoApplicationTests {
 
 	@Test
 	public void queryAllUserinfo() {
+		System.out.println("第一次查询");
 		List<Userinfo> list = userinfoServiceImpl.queryAllUserinfo();
 		for (Userinfo u : list) {
 			System.out.println(u);
 		}
+
+		System.out.println("第二次查询");
+		List<Userinfo> list1 = userinfoServiceImpl.queryAllUserinfo();
+		for (Userinfo u : list1) {
+			System.out.println(u);
+		}
 	}
+
+	@Test
+	public void queryUserinfoById(){
+	    Userinfo u = userinfoServiceImpl.queryUserinfoById(1);
+	    System.out.println(u);
+
+	    Userinfo u1 = userinfoServiceImpl.queryUserinfoById1(1);
+	    System.out.println(u1);
+    }
 
 }

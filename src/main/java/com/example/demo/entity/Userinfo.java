@@ -3,9 +3,11 @@ package com.example.demo.entity;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Userinfo {
+public class Userinfo implements Serializable {
+
     private Integer id;
 
     @NotBlank()//用户名非空效验

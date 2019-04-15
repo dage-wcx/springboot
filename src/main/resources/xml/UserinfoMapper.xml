@@ -94,6 +94,9 @@
     <select id="queryAllUserinfo" resultMap="baseResultMap" resultType="list">
         select <include refid="Base_Column_List"/> from userinfo
     </select>
+    <select id="queryUserinfoById" parameterType="int" resultMap="baseResultMap">
+        select <include refid="Base_Column_List"/> from userinfo where id = #{value}
+    </select>
 
     <update id="updateUserinfoById" parameterType="userinfo">
         update userinfo

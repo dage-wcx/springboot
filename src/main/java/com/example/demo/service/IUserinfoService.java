@@ -32,4 +32,12 @@ public interface IUserinfoService {
      * @return
      */
     boolean updateUserinfoById(Userinfo userinfo);
+
+    /**
+     * 根据id查询用户
+     * @param id
+     * @return
+     */
+    Userinfo queryUserinfoById(Integer id);
+    Userinfo queryUserinfoById1(Integer id);
 }
